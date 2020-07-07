@@ -1,5 +1,3 @@
-console.log("Hello from your service worker!");
-
 const FILES_TO_CACHE = [
   "./",
   "./index.html",
@@ -55,6 +53,7 @@ self.addEventListener("fetch", function(evt) {
               return response;
             })
             .catch(err => {
+              console.log(evt.request)
               // Network request failed, try to get it from the cache.
               return cache.match(evt.request);
             });
